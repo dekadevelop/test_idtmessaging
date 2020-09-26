@@ -20,11 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Home Page"),
-        ),
-      ),
+      home: Provider(create: (_) => ConversationViewModel(), child: HomePage()),
     );
   }
 }
