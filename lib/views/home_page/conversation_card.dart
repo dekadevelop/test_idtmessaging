@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:test_idtmessaging/models/conversation.dart';
+import 'package:test_idtmessaging/viewmodels/conversation_viewmodel.dart';
 import 'package:test_idtmessaging/views/conversation_page/conversation_page.dart';
 
 class ConversationCard extends StatelessWidget {
@@ -14,7 +16,10 @@ class ConversationCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ConversationPage(conversation),
+            builder: (context) => Provider(
+              create: (_) => ConversationViewModel(),
+              child: ConversationPage(conversation),
+            ),
           ),
         );
       },

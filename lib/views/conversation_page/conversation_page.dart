@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:test_idtmessaging/models/conversation.dart';
+import 'package:test_idtmessaging/models/conversation_message.dart';
+import 'package:test_idtmessaging/viewmodels/conversation_viewmodel.dart';
 
 class ConversationPage extends StatelessWidget {
   final Conversation conversation;
@@ -8,10 +11,27 @@ class ConversationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var viewModel = Provider.of<ConversationViewModel>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(title: Text(conversation.topic)),
-      body: Center(
-        child: Text(conversation.id),
+      body: FutureBuilder<List<ConversationMessage>>(
+        future: viewModel.getConversation(conversation.id),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            var messages = snapshot.data;
+            return ListView.builder(
+              padding: const EdgeInsets.all(8),
+              itemCount: messages.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(child: Text(messages[index].message));
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          return CircularProgressIndicator();
+        },
       ),
     );
   }
