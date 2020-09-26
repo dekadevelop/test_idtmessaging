@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:test_idtmessaging/viewmodels/conversation_viewmodel.dart';
+import 'package:test_idtmessaging/views/home_page.dart';
+
+import 'locator.dart';
 
 void main() {
+  setupServices();
   runApp(MyApp());
 }
 
