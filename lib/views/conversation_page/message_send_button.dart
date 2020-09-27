@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_idtmessaging/viewmodels/conversation_messages_viewmodel.dart';
 
-class ConversationMessageSend extends StatefulWidget {
+class MessageSendButton extends StatefulWidget {
   @override
-  _ConversationMessageSendState createState() =>
-      _ConversationMessageSendState();
+  _MessageSendButtonState createState() => _MessageSendButtonState();
 }
 
-class _ConversationMessageSendState extends State<ConversationMessageSend> {
+class _MessageSendButtonState extends State<MessageSendButton> {
   TextEditingController _controller;
   @override
   void initState() {

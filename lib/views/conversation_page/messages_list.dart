@@ -3,7 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:test_idtmessaging/viewmodels/conversation_messages_viewmodel.dart';
 
-import 'conversation_message_card.dart';
+import 'message_card.dart';
 
 class MessagesList extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _MessagesListState extends State<MessagesList> {
       controller: _scrollController,
       itemCount: viewModel.messages.length,
       itemBuilder: (BuildContext context, int index) {
-        return ConversationMessageCard(viewModel.messages[index]);
+        return MessageCard(viewModel.messages[index]);
       },
     );
   }

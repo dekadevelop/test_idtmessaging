@@ -3,9 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:test_idtmessaging/models/conversation.dart';
 import 'package:test_idtmessaging/models/conversation_message.dart';
 import 'package:test_idtmessaging/viewmodels/conversation_messages_viewmodel.dart';
-import 'package:test_idtmessaging/views/conversation_page/conversation_message_send.dart';
-
-import 'conversation_message_card.dart';
+import 'message_send_button.dart';
 import 'messages_list.dart';
 
 class ConversationPage extends StatelessWidget {
@@ -39,7 +37,7 @@ class ConversationPage extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: ConversationMessageSend(),
+            child: MessageSendButton(),
           )
         ],
       ),

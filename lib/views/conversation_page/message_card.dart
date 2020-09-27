@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:test_idtmessaging/models/conversation_message.dart';
 
-class ConversationMessageCard extends StatelessWidget {
+class MessageCard extends StatelessWidget {
   final ConversationMessage conversationMessage;
 
-  const ConversationMessageCard(this.conversationMessage);
+  const MessageCard(this.conversationMessage);
 
   @override
   Widget build(BuildContext context) {
