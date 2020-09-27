@@ -16,7 +16,7 @@ class ConversationCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Provider(
+            builder: (context) => ListenableProvider(
               create: (_) => ConversationMessagesViewModel(),
               child: ConversationPage(conversation),
             ),

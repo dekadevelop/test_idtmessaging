@@ -6,6 +6,7 @@ import 'package:test_idtmessaging/viewmodels/conversation_messages_viewmodel.dar
 import 'package:test_idtmessaging/views/conversation_page/conversation_message_send.dart';
 
 import 'conversation_message_card.dart';
+import 'messages_list.dart';
 
 class ConversationPage extends StatelessWidget {
   final Conversation conversation;
@@ -28,13 +29,7 @@ class ConversationPage extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   var messages = snapshot.data;
-                  return ListView.builder(
-                    padding: const EdgeInsets.all(8),
-                    itemCount: messages.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ConversationMessageCard(messages[index]);
-                    },
-                  );
+                  return MessagesList();
                 } else if (snapshot.hasError) {
                   return Text("${snapshot.error}");
                 }
