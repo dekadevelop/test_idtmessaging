@@ -5,6 +5,7 @@ import 'package:test_idtmessaging/helpers/random_helper.dart';
 import 'package:test_idtmessaging/models/conversation.dart';
 import 'package:test_idtmessaging/viewmodels/conversation_messages_viewmodel.dart';
 import 'package:test_idtmessaging/views/conversation_page/conversation_page.dart';
+import 'package:test_idtmessaging/views/styles/text_styles.dart';
 
 class ConversationCard extends StatelessWidget {
   final Conversation conversation;
@@ -64,10 +65,7 @@ class ConversationCard extends StatelessWidget {
         getDateFromTimeStamp(conversation.modifiedAt),
         textAlign: TextAlign.end,
         maxLines: 2,
-        style: TextStyle(
-          fontStyle: FontStyle.italic,
-          fontSize: 12,
-        ),
+        style: kCardDateStyle,
       ),
     );
   }
@@ -87,13 +85,7 @@ class ConversationCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          conversation.topic,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        Text(conversation.topic, style: kCardTitleStyle),
         SizedBox(height: 12),
         Text(conversation.lastMessage),
         SizedBox(height: 5),

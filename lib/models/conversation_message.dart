@@ -5,12 +5,14 @@ class ConversationMessage {
   final String message;
   final int modifiedAt;
   final String sender;
+  final bool sent;
 
   ConversationMessage({
     @required this.id,
     this.message,
     this.modifiedAt,
     this.sender,
+    this.sent = false,
   });
 
   factory ConversationMessage.fromJson(Map<String, dynamic> json) {
