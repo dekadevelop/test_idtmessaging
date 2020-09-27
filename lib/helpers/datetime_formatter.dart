@@ -7,3 +7,7 @@ String getDateFromTimeStamp(int value) {
 String _format(int value) {
   return value.toString().padLeft(2, '0');
 }
+
+int getCurrentTimeStamp() {
+  return DateTime.now().millisecondsSinceEpoch;
+}
