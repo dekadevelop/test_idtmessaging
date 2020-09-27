@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:test_idtmessaging/viewmodels/conversation_messages_viewmodel.dart';
 
 class ConversationMessageSend extends StatefulWidget {
   @override
@@ -16,6 +18,8 @@ class _ConversationMessageSendState extends State<ConversationMessageSend> {
 
   @override
   Widget build(BuildContext context) {
+    var viewModel =
+        Provider.of<ConversationMessagesViewModel>(context, listen: false);
     return Container(
       padding: EdgeInsets.all(20),
       color: Colors.blue.withOpacity(0.1),
@@ -34,7 +38,11 @@ class _ConversationMessageSendState extends State<ConversationMessageSend> {
           Expanded(
             flex: 1,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                if (_controller.text != null &&
+                    _controller.text.trim().isNotEmpty)
+                  viewModel.sendMessage(_controller.text);
+              },
               icon: Icon(Icons.send),
             ),
           ),
