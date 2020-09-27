@@ -22,10 +22,12 @@ class ConversationMessagesViewModel with ChangeNotifier {
 
   sendMessage(String message) {
     messages.add(ConversationMessage(
-        id: getNewMessageId(),
-        message: message,
-        modifiedAt: getCurrentTimeStamp(),
-        sender: 'User'));
+      id: getNewMessageId(),
+      message: message,
+      modifiedAt: getCurrentTimeStamp(),
+      sender: 'User',
+      sent: true,
+    ));
     notifyListeners();
     startTimerAnswer();
   }
