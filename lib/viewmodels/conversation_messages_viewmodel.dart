@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:test_idtmessaging/helpers/datetime_formatter.dart';
+import 'package:test_idtmessaging/helpers/random_helper.dart';
 import 'package:test_idtmessaging/locator.dart';
 import 'package:test_idtmessaging/models/conversation_message.dart';
 import 'package:test_idtmessaging/repositories/conversation_repo.dart';
@@ -10,12 +10,9 @@ import 'package:test_idtmessaging/repositories/conversation_repo.dart';
 class ConversationMessagesViewModel with ChangeNotifier {
   ConversationRepo get repo => getIt.get<ConversationRepo>();
   Timer timerAnswer;
-  Random random;
 
   List<ConversationMessage> messages;
-  ConversationMessagesViewModel()
-      : messages = [],
-        random = new Random();
+  ConversationMessagesViewModel() : messages = [];
 
   Future<List<ConversationMessage>> getConversationMessages(String id) async {
     messages = await repo.fetchConversation(id);
@@ -43,7 +40,7 @@ class ConversationMessagesViewModel with ChangeNotifier {
   }
 
   void startTimerAnswer() {
-    var seconds = random.nextInt(4);
+    var seconds = getRandomInt(4);
 
     timerAnswer = Timer(
       Duration(seconds: seconds),
@@ -61,7 +58,7 @@ class ConversationMessagesViewModel with ChangeNotifier {
       var id = int.parse(last.id);
       return (id + 1).toString();
     } catch (e) {
-      return random.nextInt(1000).toString().padLeft(4, '0');
+      return getRandomInt(1000).toString().padLeft(4, '0');
     }
   }
 }
