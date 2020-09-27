@@ -6,7 +6,11 @@ import 'package:test_idtmessaging/repositories/conversation_repo.dart';
 class ConversationMessagesViewModel with ChangeNotifier {
   ConversationRepo get repo => getIt.get<ConversationRepo>();
 
+  List<ConversationMessage> messages;
+  ConversationMessagesViewModel() : messages = [];
+
   Future<List<ConversationMessage>> getConversationMessages(String id) async {
-    return await repo.fetchConversation(id);
+    messages = await repo.fetchConversation(id);
+    return messages;
   }
 }
