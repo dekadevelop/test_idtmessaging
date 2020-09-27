@@ -19,28 +19,31 @@ class ConversationPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(conversation.topic)),
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: kSendMessageContainerH),
-            child: FutureBuilder<List<ConversationMessage>>(
-              future: viewModel.getConversationMessages(conversation.id),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  var messages = snapshot.data;
-                  return MessagesList();
-                } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
-                }
-                return Center(child: CircularProgressIndicator());
-              },
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: kSendMessageContainerH),
+              child: FutureBuilder<List<ConversationMessage>>(
+                future: viewModel.getConversationMessages(conversation.id),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    var messages = snapshot.data;
+                    return MessagesList();
+                  } else if (snapshot.hasError) {
+                    return Text("${snapshot.error}");
+                  }
+                  return Center(child: CircularProgressIndicator());
+                },
+              ),
             ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: MessageSendSection(),
-          )
-        ],
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: MessageSendSection(),
+            )
+          ],
+        ),
       ),
     );
   }
