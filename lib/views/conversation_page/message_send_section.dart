@@ -51,6 +51,7 @@ class _MessageSendSectionState extends State<MessageSendSection> {
           if (_controller.text != null && _controller.text.trim().isNotEmpty)
             viewModel.sendMessage(_controller.text);
           FocusScope.of(context).unfocus();
+          _controller.text = '';
         },
         icon: Icon(Icons.send),
       ),
