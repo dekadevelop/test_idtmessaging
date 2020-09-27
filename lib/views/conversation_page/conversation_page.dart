@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:test_idtmessaging/models/conversation.dart';
 import 'package:test_idtmessaging/models/conversation_message.dart';
 import 'package:test_idtmessaging/viewmodels/conversation_viewmodel.dart';
+import 'package:test_idtmessaging/views/conversation_page/conversation_message_send.dart';
 
 import 'conversation_message_card.dart';
 
@@ -42,29 +43,7 @@ class ConversationPage extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-              padding: EdgeInsets.all(20),
-              color: Colors.blue.withOpacity(0.1),
-              height: 80,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 9,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: TextFormField(),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.send),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            child: ConversationMessageSend(),
           )
         ],
       ),
