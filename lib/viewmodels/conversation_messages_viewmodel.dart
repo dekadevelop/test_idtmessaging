@@ -14,6 +14,7 @@ class ConversationMessagesViewModel with ChangeNotifier {
 
   Future<List<ConversationMessage>> getConversationMessages(String id) async {
     messages = await repo.fetchConversation(id);
+    messages.sort((a, b) => a.modifiedAt.compareTo(b.modifiedAt));
     return messages;
   }
 
