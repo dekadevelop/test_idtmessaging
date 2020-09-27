@@ -13,4 +13,9 @@ class ConversationMessagesViewModel with ChangeNotifier {
     messages = await repo.fetchConversation(id);
     return messages;
   }
+
+  sendMessage(String message) {
+    messages.add(ConversationMessage(id: '123', message: message));
+    notifyListeners();
+  }
 }
