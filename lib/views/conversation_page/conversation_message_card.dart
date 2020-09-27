@@ -14,10 +14,10 @@ class ConversationMessageCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(conversationMessage.id),
-          Text(conversationMessage.message),
-          Text(conversationMessage.modifiedAt.toString()),
-          Text(conversationMessage.sender),
+          Text(conversationMessage.id ?? ''),
+          Text(conversationMessage.message ?? ''),
+          Text(conversationMessage.modifiedAt?.toString() ?? ''),
+          Text(conversationMessage.sender ?? ''),
         ],
       ),
     ));
