@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_idtmessaging/helpers/datetime_formatter.dart';
 import 'package:test_idtmessaging/models/conversation_message.dart';
 
 class MessageCard extends StatelessWidget {
@@ -16,7 +17,7 @@ class MessageCard extends StatelessWidget {
         children: [
           Text(conversationMessage.id ?? ''),
           Text(conversationMessage.message ?? ''),
-          Text(conversationMessage.modifiedAt?.toString() ?? ''),
+          Text(getDateFromTimeStamp(conversationMessage.modifiedAt ?? 0)),
           Text(conversationMessage.sender ?? ''),
         ],
       ),
