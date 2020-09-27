@@ -15,6 +15,16 @@ class MessageCard extends StatelessWidget {
           ? EdgeInsets.only(left: 30)
           : EdgeInsets.only(right: 30),
       child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft:
+                  conversationMessage.sent ? Radius.circular(20) : Radius.zero,
+              topRight:
+                  conversationMessage.sent ? Radius.zero : Radius.circular(20),
+              bottomRight: Radius.circular(20),
+              bottomLeft: Radius.circular(20),
+            ),
+          ),
           color:
               conversationMessage.sent ? Colors.green[50] : Colors.blueGrey[50],
           child: Padding(
@@ -36,7 +46,7 @@ class MessageCard extends StatelessWidget {
                 ),
                 Positioned(
                   top: 0,
-                  right: 0,
+                  right: 5,
                   child: Text(
                     getDateFromTimeStamp(conversationMessage.modifiedAt ?? 0),
                     style: kCardDateStyle,

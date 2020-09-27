@@ -36,7 +36,7 @@ class ConversationCard extends StatelessWidget {
               ),
               Positioned(
                 top: 0,
-                right: 0,
+                right: 5,
                 child: _modifiedAt(),
               )
             ],

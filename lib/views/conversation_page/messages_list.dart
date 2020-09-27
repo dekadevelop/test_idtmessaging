@@ -28,6 +28,7 @@ class _MessagesListState extends State<MessagesList> {
     });
 
     return ListView.builder(
+      physics: BouncingScrollPhysics(),
       padding: const EdgeInsets.all(8),
       controller: _scrollController,
       itemCount: viewModel.messages.length,
