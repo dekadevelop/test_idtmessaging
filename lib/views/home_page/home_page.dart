@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_idtmessaging/viewmodels/conversation_viewmodel.dart';
 import 'package:provider/provider.dart';
+import 'package:test_idtmessaging/views/widgets/appbar_background.dart';
 
 import 'conversation_card.dart';
 
@@ -9,9 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var viewModel = Provider.of<ConversationViewModel>(context, listen: false);
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Home Page"),
-      ),
+      appBar: _appBar(),
       body: FutureBuilder(
         future: viewModel.getConversations(),
         builder: (context, snapshot) {
@@ -25,11 +24,33 @@ class HomePage extends StatelessWidget {
               },
             );
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Center(child: Text("${snapshot.error}"));
           }
           // By default, show a loading spinner.
           return Center(child: CircularProgressIndicator());
         },
+      ),
+    );
+  }
+
+  PreferredSize _appBar() {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(80.0),
+      child: AppBar(
+        backgroundColor: Colors.blueGrey,
+        centerTitle: true,
+        flexibleSpace: AppBarBackGround(),
+        title: Padding(
+          padding: const EdgeInsets.only(top: 15.0),
+          child: Text(
+            "Home Page",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
     );
   }

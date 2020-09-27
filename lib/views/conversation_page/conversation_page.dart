@@ -4,6 +4,7 @@ import 'package:test_idtmessaging/models/conversation.dart';
 import 'package:test_idtmessaging/models/conversation_message.dart';
 import 'package:test_idtmessaging/viewmodels/conversation_messages_viewmodel.dart';
 import 'package:test_idtmessaging/views/styles/ui_styles.dart';
+import 'package:test_idtmessaging/views/widgets/appbar_background.dart';
 import 'message_send_section.dart';
 import 'messages_list.dart';
 
@@ -18,7 +19,10 @@ class ConversationPage extends StatelessWidget {
         Provider.of<ConversationMessagesViewModel>(context, listen: false);
 
     return Scaffold(
-      appBar: AppBar(title: Text(conversation.topic)),
+      appBar: AppBar(
+        title: Text(conversation.topic),
+        flexibleSpace: AppBarBackGround(),
+      ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(new FocusNode()),
         child: Stack(

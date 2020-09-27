@@ -26,7 +26,7 @@ class MessageCard extends StatelessWidget {
             ),
           ),
           color:
-              conversationMessage.sent ? Colors.green[50] : Colors.blueGrey[50],
+              conversationMessage.sent ? Colors.blue[50] : Colors.blueGrey[50],
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Stack(

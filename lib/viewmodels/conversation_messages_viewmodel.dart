@@ -42,7 +42,7 @@ class ConversationMessagesViewModel with ChangeNotifier {
   }
 
   void startTimerAnswer() {
-    var seconds = getRandomInt(4);
+    var seconds = getRandomInt(4) + 1;
 
     timerAnswer = Timer(
       Duration(seconds: seconds),
