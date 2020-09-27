@@ -17,23 +17,56 @@ class ConversationPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(conversation.topic)),
-      body: FutureBuilder<List<ConversationMessage>>(
-        future: viewModel.getConversation(conversation.id),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            var messages = snapshot.data;
-            return ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: messages.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ConversationMessageCard(messages[index]);
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 80.0),
+            child: FutureBuilder<List<ConversationMessage>>(
+              future: viewModel.getConversation(conversation.id),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  var messages = snapshot.data;
+                  return ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: messages.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ConversationMessageCard(messages[index]);
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                return CircularProgressIndicator();
               },
-            );
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-          return CircularProgressIndicator();
-        },
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              padding: EdgeInsets.all(20),
+              color: Colors.blue.withOpacity(0.1),
+              height: 80,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 9,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: TextFormField(),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.send),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
