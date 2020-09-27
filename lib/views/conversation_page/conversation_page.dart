@@ -4,6 +4,8 @@ import 'package:test_idtmessaging/models/conversation.dart';
 import 'package:test_idtmessaging/models/conversation_message.dart';
 import 'package:test_idtmessaging/viewmodels/conversation_viewmodel.dart';
 
+import 'conversation_message_card.dart';
+
 class ConversationPage extends StatelessWidget {
   final Conversation conversation;
 
@@ -24,7 +26,7 @@ class ConversationPage extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               itemCount: messages.length,
               itemBuilder: (BuildContext context, int index) {
-                return Card(child: Text(messages[index].message));
+                return ConversationMessageCard(messages[index]);
               },
             );
           } else if (snapshot.hasError) {
